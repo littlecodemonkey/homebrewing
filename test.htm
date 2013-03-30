@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Title of the document</title>
+	<meta name="description" content="Homebrewing software for brewing day calculations">
+	<meta name="author" content="Matthew Kunzman">
+	<meta name="keywords" content="beer, brewing, homebrewing, calculations, math, formula, program">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+	</script>
+</head>
+		
+<body>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$(".tab_content").hide();
+		$(".tab_content:first").show(); 
+	
+		$("ul.tabs li").click(function() {
+			$("ul.tabs li").removeClass("active");
+			$(this).addClass("active");
+			$(".tab_content").hide();
+			var activeTab = $(this).attr("rel"); 
+			$("#"+activeTab).fadeIn(200); 
+		});
+	});
+
+</script> 
+Brew Day Helper<br />
+   <ul class="tabs"> 
+        <li class="active" rel="tab1"> About</li>
+        <li rel="tab2"> Mashing</li>
+		<li rel="tab3"> Brewing</li>
+        <li rel="tab4"> Fermenting</li>
+        <li rel="tab5"> Conditioning</li>
+        <li rel="tab6"> Conversions</li>
+    </ul>
+	
+	<div class="tab_container"> 
+
+     <div id="tab1" class="tab_content"> 
+ 
+         <p><img src="images/1.jpg"> <br />
+         <strong>About</strong><br />
+ <a href="b_notes.pdf">Link to my brewing pdf notes</a><br />
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet enim vel nulla accumsan laoreet. Duis ut mauris at urna lobortis tempus eget ac purus. Nullam mattis facilisis sapien, quis pellentesque velit sagittis congue. Etiam imperdiet sollicitudin nulla, egestas dignissim tellus egestas non. Pellentesque mattis mi et magna dapibus ac dapibus quam sollicitudin. Phasellus mattis condimentum purus, quis auctor libero tincidunt laoreet. Curabitur eleifend fringilla interdum.
+         </p>
+
+     </div><!-- #tab1 -->
+     <div id="tab2" class="tab_content"> 
+		Strike Water - 	$mash_temp,$temp_of_grain,$total_lbs_grain,$water_to_grain_ratio <br />
+		Absorbtion Loss - $total_lbs_grain<br />
+		Infusion Water,Sparge water - $initial_temp,$target_temp,$grain_lbs,$mash_volume_qrts,$infusion_temp<br />
+        <br /><br />
+      ANSWERS:<br />
+     <iframe id="mashing_answers" name="mashing_answers" class="answer_iframe" src="about:blank">
+    [Your browser does not support iframes... Bummer.]
+    </iframe> 
+       </p>
+
+     </div><!-- #tab2 -->
+     <div id="tab3" class="tab_content"> 
+         <h2>Boil Loss (Possibly add to sparge water) </h2>
+         Batch size: <input type="text" name="batch_size" value="11" />
+           Gal <input type="radio" name="brewVolType" checked="checked" value="Gal" />
+		   L <input type="radio" name="brewVolType" value="L" />
+         <br />
+         Boil length: <input type="text" name="boil_length" value="90" /> Minutes<br /> 
+         Evaporation Rate: <input type="text" name="evap_rate" value=".1" /><br />
+	 IBUs<br />
+		Hop timer<br />
+        <br /><br />
+      ANSWERS:<br />
+     <iframe id="brewing_answers" name="brewing_answers" class="answer_iframe" src="about:blank">
+    [Your browser does not support iframes... Bummer.]
+    </iframe> 
+
+     </div><!-- #tab3 -->
+     <div id="tab4" class="tab_content"> 
+		 Temperature adjustment<br />
+		 <table><tr>
+			<td>Temperature:</td>
+			<td><input type="text" name="temp" value="" /> 
+				  C <input type="radio" name="gravTempType" value="C" />
+				  F <input type="radio" name="gravTempType" checked="checked" value="F" />
+			  </td>
+			  </tr><tr>
+				<td>Gravity: </td>
+			<td><input type="text" name="gravity" value="" /> 
+				  SG <input type="radio" name="gravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="gravType" value="Plato" />
+			  </td>
+		  </tr>
+		  <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
+	  </table>
+	  <br /><br />
+<hr>
+
+	  <br /><br />
+	  <br /><br />
+
+<table>
+			  <tr>
+				<td>Original Gravity: </td>
+			<td><input type="text" name="gravity" value="" /> 
+				  SG <input type="radio" name="OGgravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="OGgravType" value="Plato" />
+			  </td>
+		  </tr>
+			  </tr><tr>
+				<td>Final Gravity: </td>
+			<td><input type="text" name="gravity" value="" /> 
+				  SG <input type="radio" name="FGgravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="FGgravType" value="Plato" />
+			  </td>
+		  </tr>
+		  <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
+	  </table>
+	  <br /><br />
+    ANSWERS:
+    <br />
+    <iframe id="fermentation_answers" name="fermentation_answers" class="answer_iframe" src="about:blank">
+    [Your browser does not support iframes... Bummer.]
+    </iframe> 
+
+     </div><!-- #tab4 --> 
+ <div id="tab5" class="tab_content"> 
+
+	 <table>
+		 <tr>
+			 <td>Volume: </td>
+			 <td><input type="text" name="volume" value="" />
+		   		 Gal <input type="radio" name="volType" checked="checked" value="Gal" />
+				 L <input type="radio" name="volType" value="L" />
+			</td>
+		</tr><tr>
+			<td>Temperature:</td>
+			<td><input type="text" name="temp" value="" /> 
+				  C <input type="radio" name="volTempType" value="C" />
+				  F <input type="radio" name="volTempType" checked="checked" value="F" />
+			  </td>
+		</tr><tr>
+			<td>Desired CO2:</td>
+			<td>(DROPDOWN MENU)</td>
+		</tr>
+		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="button" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td></tr></table>
+	<br /><br />
+    ANSWERS:
+    <br />
+    <iframe id="carbonation_answers" name="carbonation_answers" class="answer_iframe" src="about:blank">
+    [Your browser does not support iframes... Bummer.]
+    </iframe> 
+ </div><!-- #tab5 -->
+ 
+<div id="tab6" class="tab_content"> 
+       Conversion calculations<br />
+ </div>
+	
+ </div> <!-- .tab_container --> 
+ 
+
+TEST After content
+
+</body></html> 
