@@ -43,7 +43,9 @@ Brew Day Helper<br />
 
      <div id="tab1" class="tab_content"> 
  
-         <p><img src="images/1.jpg"> <br />
+         <p>
+        <div class="growImage" style="float:left; margin:25px"><img class="growImage" src="images/carboy2.jpg" alt="matt_336px (62K)" /></div> 
+        <br />
          <strong>About</strong><br />
  <a href="b_notes.pdf">Link to my brewing pdf notes</a><br />
          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet enim vel nulla accumsan laoreet. Duis ut mauris at urna lobortis tempus eget ac purus. Nullam mattis facilisis sapien, quis pellentesque velit sagittis congue. Etiam imperdiet sollicitudin nulla, egestas dignissim tellus egestas non. Pellentesque mattis mi et magna dapibus ac dapibus quam sollicitudin. Phasellus mattis condimentum purus, quis auctor libero tincidunt laoreet. Curabitur eleifend fringilla interdum.
@@ -51,9 +53,33 @@ Brew Day Helper<br />
 
      </div><!-- #tab1 -->
      <div id="tab2" class="tab_content"> 
-		Strike Water - 	$mash_temp,$temp_of_grain,$total_lbs_grain,$water_to_grain_ratio <br />
-		Absorbtion Loss - $total_lbs_grain<br />
-		Infusion Water,Sparge water - $initial_temp,$target_temp,$grain_lbs,$mash_volume_qrts,$infusion_temp<br />
+         Strike Water <br />
+         Mash Temp <input type="text" name="mash_temp" /><br />
+         Temp of Grain <input type="text" name="grain_temp" />
+				  F <input type="radio" name="mashTempType" checked="checked" value="F" />
+                  C <input type="radio" name="mashTempType" value="C" /><br />
+                  Total lbs of grain <input type="text" name="grain_weight" /><br />
+                  Water to grain ratio <input type="text" name="water_2_grain" value="1.3" /><br />
+                  <!-- Strike Water, Absorbtion Loss -->
+        <br /><br />
+        Infusion Water<br />
+         Initial Temp <input type="text" name="mash_temp" /><br />
+         Target Temp <input type="text" name="mash_temp" /><br />
+         Total lbs of grain <input type="text" name="grain_weight" /><br />
+         Current mash volume <input type="text" name="mash_volume" /><br />
+         Infusion Temp <input type="text" name="infusion_temp" value="212" /><br />
+        <br /><br />
+         Sparge water<br />
+                  Water to grain ratio <input type="text" name="water_2_grain" value="1.3" /><br />
+                  Current mash volume <input type="text" name="mash_volume" /><br />
+                  Boil Length <input type="text" name="boil_length" value="90" /> mins<br />
+                  Boil Evaporation Rate <input type="text" name="evap_rate" value="0.10" /><br />
+                  Batch size: <input type="text" name="batch_size" value="11" />
+                    Gal <input type="radio" name="brewVolType" checked="checked" value="Gal" />
+		            L <input type="radio" name="brewVolType" value="L" />
+                    <br />
+
+
         <br /><br />
       ANSWERS:<br />
      <iframe id="mashing_answers" name="mashing_answers" class="answer_iframe" src="about:blank">
@@ -63,13 +89,6 @@ Brew Day Helper<br />
 
      </div><!-- #tab2 -->
      <div id="tab3" class="tab_content"> 
-         <h2>Boil Loss (Possibly add to sparge water) </h2>
-         Batch size: <input type="text" name="batch_size" value="11" />
-           Gal <input type="radio" name="brewVolType" checked="checked" value="Gal" />
-		   L <input type="radio" name="brewVolType" value="L" />
-         <br />
-         Boil length: <input type="text" name="boil_length" value="90" /> Minutes<br /> 
-         Evaporation Rate: <input type="text" name="evap_rate" value=".1" /><br />
 	 IBUs<br />
 		Hop timer<br />
         <br /><br />
@@ -84,8 +103,8 @@ Brew Day Helper<br />
 		 <table><tr>
 			<td>Temperature:</td>
 			<td><input type="text" name="temp" value="" /> 
-				  C <input type="radio" name="gravTempType" value="C" />
 				  F <input type="radio" name="gravTempType" checked="checked" value="F" />
+				  C <input type="radio" name="gravTempType" value="C" />
 			  </td>
 			  </tr><tr>
 				<td>Gravity: </td>
@@ -143,8 +162,9 @@ Brew Day Helper<br />
 				  F <input type="radio" name="volTempType" checked="checked" value="F" />
 			  </td>
 		</tr><tr>
-			<td>Desired CO2:</td>
-			<td>(DROPDOWN MENU)</td>
+        <td>Desired CO<sub>2</sub>:</td>
+        <td><input type="text" name="vol_co2" value="2.5" />
+        </td>
 		</tr>
 		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="button" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td></tr></table>
 	<br /><br />
@@ -153,6 +173,112 @@ Brew Day Helper<br />
     <iframe id="carbonation_answers" name="carbonation_answers" class="answer_iframe" src="about:blank">
     [Your browser does not support iframes... Bummer.]
     </iframe> 
+
+
+
+<div class="comment">
+<b>Volumes of CO<sub>2</sub> for common styles : </b>
+<p>
+Use the following list as a reference when entering the desired carbonation
+level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is shown.
+
+</p><p>
+</p><table><tbody><tr>
+  <td>Styles:</td>
+  <td><select name="c_style">
+   <option value="0" selected="">American Amber Ale: 2.2 to 2.8
+</option><option value="1">American Brown: 1.5 to 2.5
+</option><option value="2">American Dark Lager: 2.5 to 2.7
+</option><option value="3">American Lager: 2.6 to 2.7
+</option><option value="4">American Light Lager: 2.6
+</option><option value="5">American Pale Ale: 2.2 to 2.8
+</option><option value="6">American Pilsener: 2.6 to 2.7
+</option><option value="7">American Premium Lager: 2.6 to 2.7
+</option><option value="8">American Wheat: 2.3 to 2.6
+
+</option><option value="9">Bamberg Rauchbier: 2.2 to 2.6
+</option><option value="10">Barley Wine: 1.3 to 2.3
+</option><option value="11">Belgian Dubbel: 1.9 to 2.4
+</option><option value="12">Belgian Fruit Lambic: 2.6 to 4.5
+</option><option value="13">Belgian Gueuze Lambic: 3.0 to 4.5
+</option><option value="14">Belgian Lambic: 3.0 to 4.5
+</option><option value="15">Belgian Pale Ale: 1.9 to 2.5
+</option><option value="16">Belgian Strong Ale: 1.9 to 2.4
+</option><option value="17">Belgian Tripel: 1.9 to 2.4
+</option><option value="18">Belgian White (Wit): 2.1 to 2.6
+</option><option value="19">Berliner Weisse: 3.5
+</option><option value="20">Bière de Garde: 2.5 
+</option><option value="21">Bock: 2.2 to 2.7
+</option><option value="22">Bohemian Pilsener: 2.3 to 2.5
+</option><option value="23">Brown Porter: 1.7 to 2.5
+
+</option><option value="24">California Common: 2.4 to 2.8
+</option><option value="25">Cream Ale: 2.6 to 2.7
+
+</option><option value="26">Doppelbock: 2.3 to 2.6
+</option><option value="27">Dortmunder/European Export: 2.6
+</option><option value="28">Dunkelweizen: 3.6 to 4.5
+</option><option value="29">Düsseldorf Altbier: 2.2 to 3.1
+
+</option><option value="30">Eisbock: 2.4
+</option><option value="31">English Best (Special) Bitter: 0.75 to 1.3
+</option><option value="32">English Brown: 1.5 to 2.3
+</option><option value="33">English Dark Mild: 1.3 to 2.0
+</option><option value="34">English Light Mild: 1.3 to 2.0
+</option><option value="35">English Old/Strong Ale: 1.5 to 2.3
+</option><option value="36">English Ordinary Bitter: 0.75 to 1.3
+</option><option value="37">English Pale Ale: 1.5 to 2.3
+</option><option value="38">English Strong (Extra Special) Bitter: 0.75 to 1.3
+
+</option><option value="39">Flanders Brown: 1.9 to 2.5
+</option><option value="40">Foreign to Style Stout: 2.3 to 2.6
+
+</option><option value="41">German Pilsener: 2.5
+
+</option><option value="42">Helles Bock: 2.2 to 2.7
+
+</option><option value="43">Imperial Stout: 1.5 to 2.3
+</option><option value="44">India Pale Ale: 1.5 to 2.3
+</option><option value="45">Irish Dry Stout: 1.6 to 2.0
+
+</option><option value="46">Kölsch: 2.4 to 2.7
+
+</option><option value="47">Maibock: 2.2 to 2.7
+</option><option value="48">Märzen/Oktoberfest: 2.6 to 2.7
+</option><option value="49">Münchner Helles: 2.3 to 2.7
+</option><option value="50">Munich Dunkel: 2.2 to 2.7
+
+</option><option value="51">North German Altbier: 2.2 to 3.1
+
+</option><option value="52">Oatmeal Stout: 
+</option><option value="53">Oud Bruin: 1.9 to 2.5
+
+</option><option value="54">Robust Porter: 1.8 to 2.5
+
+</option><option value="55">Schwarzbier: 2.2 to 2.6
+</option><option value="56">Scottish Export Ale: 0.75 to 1.3
+</option><option value="57">Scottish Heavy Ale: 0.75 to 1.3
+</option><option value="58">Scottish Light Ale: 0.75 to 1.3
+</option><option value="59">Strong Scotch Ale: 1.5 to 2.3
+</option><option value="60">Sweet Stout: 2.0 to 2.4
+
+</option><option value="61">Traditional Bock: 2.2 to 2.7
+
+</option><option value="62">Vienna: 2.4 to 2.6
+
+</option><option value="63">Weizen/Weissbier: 3.6 to 4.5
+</option><option value="64">Weizenbock: 3.7 to 4.7
+
+  </option></select></td>
+</tr></tbody></table>
+<br><br>
+
+<b>NOTE:</b> The "Temperature" is for the current temperature of the beer. This is used to calculate how much CO<sub>2</sub> is already in suspension.</div>
+
+
+
+
+
  </div><!-- #tab5 -->
  
 <div id="tab6" class="tab_content"> 

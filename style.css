@@ -53,3 +53,28 @@
         width:600px;
         height:250px;
     }
+
+
+    .comment{
+        width: 500px;
+        background-color: #a0a0aa;
+        text-align: left;
+        padding: 10px;
+        color: Black;
+        border:#000000 2px solid;
+        font-size:9pt;
+    }
+   
+.growImage img{  
+					 width: 200px; 
+					 margin: 15px 0; 
+					 -webkit-transition: all 1s ease; 
+					 -moz-transition: all 1s ease; 
+					 -o-transition: all 1s ease; 
+} 
+
+.growImage img:hover {  
+					 width: 384px; 
+					 margin-left: -20px; 
+}
+    
