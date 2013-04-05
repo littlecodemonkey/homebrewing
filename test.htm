@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
 	</script>
 </head>
-		
+
 <body>
 
 <script type="text/javascript">
@@ -18,7 +18,7 @@
 	$(document).ready(function() {
 		$(".tab_content").hide();
 		$(".tab_content:first").show(); 
-	
+
 		$("ul.tabs li").click(function() {
 			$("ul.tabs li").removeClass("active");
 			$(this).addClass("active");
@@ -38,7 +38,7 @@ Brew Day Helper<br />
         <li rel="tab5"> Conditioning</li>
         <li rel="tab6"> Conversions</li>
     </ul>
-	
+
 	<div class="tab_container"> 
 
      <div id="tab1" class="tab_content"> 
@@ -121,23 +121,28 @@ Brew Day Helper<br />
 	  <br /><br />
 	  <br /><br />
 
-<table>
-			  <tr>
+<!-- ABV, ABW, Calories, etc... -->
+     <form method="GET" action="answer_fermentation.cgi" target="fermentation_answers" />
+         <table>
+			<tr>
 				<td>Original Gravity: </td>
-			<td><input type="text" name="gravity" value="" /> 
+			    <td><input type="text" name="OG" value="" /> 
 				  SG <input type="radio" name="OGgravType" checked="checked" value="SG" />
 				  Plato <input type="radio" name="OGgravType" value="Plato" />
-			  </td>
-		  </tr>
-			  </tr><tr>
+			    </td>
+		    </tr>
+			</tr><tr>
 				<td>Final Gravity: </td>
-			<td><input type="text" name="gravity" value="" /> 
+			    <td><input type="text" name="FG" value="" /> 
 				  SG <input type="radio" name="FGgravType" checked="checked" value="SG" />
 				  Plato <input type="radio" name="FGgravType" value="Plato" />
-			  </td>
-		  </tr>
-		  <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
-	  </table>
+			    </td>
+		    </tr>
+		    <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
+	    </table>
+    </form>
+<!-- END OF: ABV, ABW, Calories, etc... -->
+
 	  <br /><br />
     ANSWERS:
     <br />
@@ -150,6 +155,7 @@ Brew Day Helper<br />
 
 	 <table>
 		 <tr>
+              <form method="GET" action="answer_carbonation.cgi" target="carbonation_answers" />
 			 <td>Volume: </td>
 			 <td><input type="text" name="volume" value="" />
 		   		 Gal <input type="radio" name="volType" checked="checked" value="Gal" />
@@ -166,7 +172,10 @@ Brew Day Helper<br />
         <td><input type="text" name="vol_co2" value="2.5" />
         </td>
 		</tr>
-		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="button" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td></tr></table>
+		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="button" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td>
+        </form>
+</tr>
+</table>
 	<br /><br />
     ANSWERS:
     <br />
@@ -207,7 +216,7 @@ level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is 
 </option><option value="17">Belgian Tripel: 1.9 to 2.4
 </option><option value="18">Belgian White (Wit): 2.1 to 2.6
 </option><option value="19">Berliner Weisse: 3.5
-</option><option value="20">Bière de Garde: 2.5 
+</option><option value="20">BiÃ¨re de Garde: 2.5 
 </option><option value="21">Bock: 2.2 to 2.7
 </option><option value="22">Bohemian Pilsener: 2.3 to 2.5
 </option><option value="23">Brown Porter: 1.7 to 2.5
@@ -218,7 +227,7 @@ level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is 
 </option><option value="26">Doppelbock: 2.3 to 2.6
 </option><option value="27">Dortmunder/European Export: 2.6
 </option><option value="28">Dunkelweizen: 3.6 to 4.5
-</option><option value="29">Düsseldorf Altbier: 2.2 to 3.1
+</option><option value="29">DÃ¼sseldorf Altbier: 2.2 to 3.1
 
 </option><option value="30">Eisbock: 2.4
 </option><option value="31">English Best (Special) Bitter: 0.75 to 1.3
@@ -241,11 +250,11 @@ level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is 
 </option><option value="44">India Pale Ale: 1.5 to 2.3
 </option><option value="45">Irish Dry Stout: 1.6 to 2.0
 
-</option><option value="46">Kölsch: 2.4 to 2.7
+</option><option value="46">KÃ¶lsch: 2.4 to 2.7
 
 </option><option value="47">Maibock: 2.2 to 2.7
-</option><option value="48">Märzen/Oktoberfest: 2.6 to 2.7
-</option><option value="49">Münchner Helles: 2.3 to 2.7
+</option><option value="48">MÃ¤rzen/Oktoberfest: 2.6 to 2.7
+</option><option value="49">MÃ¼nchner Helles: 2.3 to 2.7
 </option><option value="50">Munich Dunkel: 2.2 to 2.7
 
 </option><option value="51">North German Altbier: 2.2 to 3.1
@@ -273,18 +282,17 @@ level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is 
 </tr></tbody></table>
 <br><br>
 
-<b>NOTE:</b> The "Temperature" is for the current temperature of the beer. This is used to calculate how much CO<sub>2</sub> is already in suspension.</div>
-
-
-
-
+<b>NOTE:</b><br />
+<i>
+    The "Temperature" is for the current temperature of the beer. This is used to calculate how much CO<sub>2</sub> is already in suspension.<br /> 
+    Also: Always add .2 volumes of CO2 to the recommended volume to make up for the carbonation lost at the tap.</i><br /></div>
 
  </div><!-- #tab5 -->
  
 <div id="tab6" class="tab_content"> 
        Conversion calculations<br />
  </div>
-	
+
  </div> <!-- .tab_container --> 
  
 

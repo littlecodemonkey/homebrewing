@@ -65,16 +65,30 @@
         font-size:9pt;
     }
    
-.growImage img{  
-					 width: 200px; 
-					 margin: 15px 0; 
-					 -webkit-transition: all 1s ease; 
-					 -moz-transition: all 1s ease; 
-					 -o-transition: all 1s ease; 
-} 
+    .growImage img{  
+		width: 200px; 
+		margin: 15px 0; 
+		-webkit-transition: all 1s ease; 
+		-moz-transition: all 1s ease; 
+		-o-transition: all 1s ease; 
+    } 
 
-.growImage img:hover {  
-					 width: 384px; 
-					 margin-left: -20px; 
-}
+    .growImage img:hover {  
+		width: 384px; 
+		margin-left: -20px; 
+    }
     
+    .invalidInput {
+        color:white;
+        background-color:red; 
+        font-weight:bold;
+    }
+
+    .answerText {
+        font-size: 10pt;
+    }
+
+    .answerHeader {
+        font-size: 14pt;
+        font-weight:bold;
+    }
