@@ -126,18 +126,24 @@ Brew Day Helper<br />
          <table>
 			<tr>
 				<td>Original Gravity: </td>
-			    <td><input type="text" name="OG" value="" /> 
-				  SG <input type="radio" name="OGgravType" checked="checked" value="SG" />
-				  Plato <input type="radio" name="OGgravType" value="Plato" />
-			    </td>
+			    <td><input type="text" name="OG" value="" /></td>
+                <td>Temp:</td>
+                <td><input type="text" name="OGtemp" value="" /></td>
 		    </tr>
-			</tr><tr>
+			<tr>
 				<td>Final Gravity: </td>
 			    <td><input type="text" name="FG" value="" /> 
-				  SG <input type="radio" name="FGgravType" checked="checked" value="SG" />
-				  Plato <input type="radio" name="FGgravType" value="Plato" />
+                <td>Temp:</td>
+                <td><input type="text" name="FGtemp" value="" /></td>
 			    </td>
 		    </tr>
+                <tr>
+                <td colspan="4">
+				  SG <input type="radio" name="OGgravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="OGgravType" value="Plato" />
+				  SG <input type="radio" name="FGgravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="FGgravType" value="Plato" />
+          </td></tr>
 		    <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
 	    </table>
     </form>
