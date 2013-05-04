@@ -30,10 +30,12 @@ use strict;
 # t = Length of boil (mins)
 ###################################################################
 sub boil_loss {
-	my ($batch_size,$evap_rate,$boil_length) = @_;
+	my ($batch_size,$boil_length,$evap_rate) = @_;
 	$evap_rate = .1 unless $evap_rate; # Default is 10% an hour if none is passed
 	$boil_length = 90 unless $boil_length; # Default is 90 minutes if none is passed
 	my $pre_wort_boil = $batch_size / (.96-$evap_rate*$boil_length*.016);
+    $pre_wort_boil = sprintf "%.3f", $pre_wort_boil; # Limiting to 3 decimals
+    $pre_wort_boil =~ s/\.?0*$//; # Clearing the zeros off the end
 	return $pre_wort_boil;
 }
 
@@ -67,6 +69,10 @@ sub initial_strike_water {
 	my ($mash_temp,$temp_of_grain,$total_lbs_grain,$water_to_grain_ratio) = @_;
 	my $water_added_qrts = $water_to_grain_ratio * $total_lbs_grain; # Strike water volume
 	my $initial_temp = (.2/$water_to_grain_ratio) * ($mash_temp - $temp_of_grain) + $mash_temp; # Strike water temp
+    $water_added_qrts = sprintf "%.3f", $water_added_qrts; # Limiting to 3 decimals
+    $water_added_qrts =~ s/\.?0*$//; # Clearing the zeros off the end
+    $initial_temp = sprintf "%.3f", $initial_temp; # Limiting to 3 decimals
+    $initial_temp =~ s/\.?0*$//; # Clearing the zeros off the end
 	return ($initial_temp,$water_added_qrts);
 }
 
@@ -87,6 +93,8 @@ sub mash_infusion {
 	my ($initial_temp,$target_temp,$grain_lbs,$mash_volume_qrts,$infusion_temp) = @_;
 	$infusion_temp = 212 unless $infusion_temp; # If your water boils at a temperature other than 212F you will need to modify this.
 	my $water_added_qrts = ( ($target_temp - $initial_temp) * (.2*$grain_lbs + $mash_volume_qrts) )/($infusion_temp - $target_temp);
+    $water_added_qrts = sprintf "%.3f", $water_added_qrts; # Limiting to 3 decimals
+    $water_added_qrts =~ s/\.?0*$//; # Clearing the zeros off the end
 	return ($water_added_qrts);
 }
 
@@ -95,18 +103,21 @@ sub mash_infusion {
 # SUBROUTINE: Hydrometer Temp Correction
 # NOTES: Corrects for the temperature difference of hydrometer readings
 #
-# FORMULA: C = ((1.313454 - (0.132674*F) + (0.00205779 * F^2) - (0.000002627634 * F^2)))
+# FORMULA: C = 1.313454 - (0.132674*F) + (0.00205779 * F^2) - (0.000002627634 * F^2)
 # F = Temperature Deg F
 # C = Correction
 #
-# SECOND FORMULA: CG = C + (SG * 0.001)
+# SECOND FORMULA: CG = SG + (C * 0.001)
 # SG = Specific Gravity before temperature correction.
 # CG = Specific Gravity corrected for temperature
 ###################################################################
 sub hydrometer_temp_correction {
 	my ($temp,$orig_gravity) = @_;
-	my $correction = ((1.313454 - (0.132674*$temp) + (0.00205779 * $temp^2) - (0.000002627634 * $temp^2)));
-	my $corrected_gravity = $correction + ($orig_gravity * 0.001);
+
+    my $correction = 1.313454 - 0.132674*$temp + 0.002057793*$temp*$temp - 0.000002627634*$temp*$temp*$temp;
+    my $corrected_gravity = $orig_gravity + ($correction * 0.001);
+	$corrected_gravity = sprintf "%.3f", $corrected_gravity; # Limiting to 3 decimals
+
 	return $corrected_gravity;
 }
 
@@ -186,6 +197,8 @@ sub abv {
 sub apparent_attenuation {
 	my ($OG,$FG) = @_;
 	my $attenuation = ($OG-$FG)/$OG*100;
+    $attenuation = sprintf "%.3f", $attenuation; # Limiting to 3 decimals
+    $attenuation =~ s/\.?0*$//; # Clearing the zeros off the end
 	return $attenuation;
 }
 
@@ -234,6 +247,8 @@ sub real_extract {
 sub real_attenuation {
 	my ($OE,$RE) = @_;
 	my $RA = (($OE - $RE) / $OE) * 100;
+    $RA = sprintf "%.3f", $RA; # Limiting to 3 decimals
+    $RA =~ s/\.?0*$//; # Clearing the zeros off the end
 	return $RA;
 }
 
@@ -270,6 +285,7 @@ sub convertMeasurement {
         when (/lb->kg/)    { $output = $measurement * 0.4536; }
         when (/kg->lb/)    { $output = $measurement * 2.2046; }
         when (/qrts->Gal/) { $output = $measurement * 0.25; }
+        when (/qrts->L/)   { $output = $measurement * 0.946352946; }
         when (/qrts->oz/)  { $output = $measurement * 32; }
         when (/C->F/)      { $output = ($measurement * 1.8) + 32; }
         when (/F->C/)      { $output = ($measurement - 32) / 1.8; }

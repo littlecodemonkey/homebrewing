@@ -47,39 +47,170 @@ Brew Day Helper<br />
         <div class="growImage" style="float:left; margin:25px"><img class="growImage" src="images/carboy2.jpg" alt="matt_336px (62K)" /></div> 
         <br />
          <strong>About</strong><br />
- <a href="b_notes.pdf">Link to my brewing pdf notes</a><br />
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet enim vel nulla accumsan laoreet. Duis ut mauris at urna lobortis tempus eget ac purus. Nullam mattis facilisis sapien, quis pellentesque velit sagittis congue. Etiam imperdiet sollicitudin nulla, egestas dignissim tellus egestas non. Pellentesque mattis mi et magna dapibus ac dapibus quam sollicitudin. Phasellus mattis condimentum purus, quis auctor libero tincidunt laoreet. Curabitur eleifend fringilla interdum.
+         These brewing calculators are meant to help with your brew day endeavors. If you find any errors, please contact me at matt_hew@rocketmail.com and I will fix the bugs as soon as I can.
+         Also, if there are more calculations or another feature that you think would be helpful please email me and I will look into it. 
+         <br /> <br />
+         <a href="b_notes.pdf">Link to my brewing pdf notes</a><br /><br />
+         <!-- Lorem ipsum dolor sit amet, consectetur adipiscingo elit. Proin sit amet enim vel nulla accumsan laoreet. Duis ut mauris at urna lobortis tempus eget ac purus. Nullam mattis facilisis sapien, quis pellentesque velit sagittis congue. Etiam imperdiet sollicitudin nulla, egestas dignissim tellus egestas non. Pellentesque mattis mi et magna dapibus ac dapibus quam sollicitudin. Phasellus mattis condimentum purus, quis auctor libero tincidunt laoreet. Curabitur eleifend fringilla interdum. -->
+
          </p>
 
      </div><!-- #tab1 -->
      <div id="tab2" class="tab_content"> 
-         Strike Water <br />
-         Mash Temp <input type="text" name="mash_temp" /><br />
-         Temp of Grain <input type="text" name="grain_temp" />
+
+     <form method="GET" action="answer_mashing.cgi" target="mashing_answers" />
+         <table  class="input_form" >
+             <td>
+         <b>Mash Details (For Strike Water part of Calculations)</b> <br />
+         Temp of Grain <input type="text" size="5" name="grain_temp" value="70" />
 				  F <input type="radio" name="mashTempType" checked="checked" value="F" />
                   C <input type="radio" name="mashTempType" value="C" /><br />
-                  Total lbs of grain <input type="text" name="grain_weight" /><br />
-                  Water to grain ratio <input type="text" name="water_2_grain" value="1.3" /><br />
-                  <!-- Strike Water, Absorbtion Loss -->
+         Total weight of grain <input type="text" size="5" name="grain_weight" />
+				  lbs <input type="radio" name="mashWeightType" checked="checked" value="lbs" />
+                  kg <input type="radio" name="mashWeightType" value="kg" /><br />
+         Water to grain ratio <input type="text" size="5" name="grain_ratio" value="1.3" /><br />
         <br /><br />
-        Infusion Water<br />
-         Initial Temp <input type="text" name="mash_temp" /><br />
-         Target Temp <input type="text" name="mash_temp" /><br />
-         Total lbs of grain <input type="text" name="grain_weight" /><br />
-         Current mash volume <input type="text" name="mash_volume" /><br />
-         Infusion Temp <input type="text" name="infusion_temp" value="212" /><br />
-        <br /><br />
-         Sparge water<br />
-                  Water to grain ratio <input type="text" name="water_2_grain" value="1.3" /><br />
-                  Current mash volume <input type="text" name="mash_volume" /><br />
-                  Boil Length <input type="text" name="boil_length" value="90" /> mins<br />
-                  Boil Evaporation Rate <input type="text" name="evap_rate" value="0.10" /><br />
-                  Batch size: <input type="text" name="batch_size" value="11" />
+
+         <b>Batch Details (For Absorbtion Loss part of Calculations)</b><br />
+                  Boil Length <input type="text" size="5" name="boil_length" value="90" /> mins<br />
+                  Boil Evaporation Rate <input type="text" size="5" name="evap_rate" value="0.10" /><br />
+                  Batch size: <input type="text" size="5" name="batch_size" value="11" />
                     Gal <input type="radio" name="brewVolType" checked="checked" value="Gal" />
 		            L <input type="radio" name="brewVolType" value="L" />
                     <br />
 
-
+        <br /><br />
+          <!--Dough In - Just the name of the first rest<br /><br /><br />-->
+          <b>Mash Schedule</b><br /> 
+        Acid Rest: 
+            <SELECT name="AcidRest">
+                <optgroup label="Unused">
+                    <OPTION selected="selected" value="">N/A</OPTION>
+                </optgroup>
+                <optgroup label="Fahrenheit">
+                    <OPTION value="90F">90F</OPTION> 
+                    <OPTION value="91F">91F</OPTION> 
+                    <OPTION value="92F">92F</OPTION> 
+                    <OPTION value="93F">93F</OPTION> 
+                    <OPTION value="94F">94F</OPTION> 
+                    <OPTION value="95F">95F</OPTION> 
+                    <OPTION value="96F">96F</OPTION> 
+                    <OPTION value="97F">97F</OPTION> 
+                    <OPTION value="98F">98F</OPTION> 
+                    <OPTION value="99F">99F</OPTION> 
+                    <OPTION value="100F">100F</OPTION> 
+                </optgroup>
+                <optgroup label="Celsius">
+                    <OPTION value="32C">32C</OPTION> 
+                    <OPTION value="33C">33C</OPTION> 
+                    <OPTION value="34C">34C</OPTION> 
+                    <OPTION value="35C">35C</OPTION> 
+                    <OPTION value="36C">36C</OPTION> 
+                    <OPTION value="37C">37C</OPTION> 
+                    <OPTION value="38C">38C</OPTION> 
+                </optgroup>
+            </SELECT>
+                90-100F for 30mins
+            <br />
+        Protein Rest:
+            <SELECT name="ProteinRest">
+                <optgroup label="Unused">
+                    <OPTION selected="selected" value="">N/A</OPTION>
+                </optgroup>
+                <optgroup label="Fahrenheit">
+                    <OPTION value="120F">120F</OPTION> 
+                    <OPTION value="121F">121F</OPTION> 
+                    <OPTION value="122F">122F</OPTION> 
+                    <OPTION value="123F">123F</OPTION> 
+                    <OPTION value="124F">124F</OPTION> 
+                    <OPTION value="125F">125F</OPTION> 
+                    <OPTION value="126F">126F</OPTION> 
+                    <OPTION value="127F">127F</OPTION> 
+                    <OPTION value="128F">128F</OPTION> 
+                </optgroup>
+                <optgroup label="Celsius">
+                    <OPTION value="49C">49C</OPTION> 
+                    <OPTION value="50C">50C</OPTION> 
+                    <OPTION value="51C">51C</OPTION> 
+                    <OPTION value="52C">52C</OPTION> 
+                    <OPTION value="53C">53C</OPTION> 
+                    <OPTION value="54C">54C</OPTION> 
+                </optgroup>
+            </SELECT>
+                120-128F for 20-30 mins
+            <br />
+        Beta "Intermediate" Rest:
+            <SELECT name="BetaRest">
+                <optgroup label="Unused">
+                    <OPTION selected="selected" value="">N/A</OPTION>
+                </optgroup>
+                <optgroup label="Fahrenheit">
+                    <OPTION value="145F">145F</OPTION> 
+                    <OPTION value="146F">146F</OPTION> 
+                    <OPTION value="147F">147F</OPTION> 
+                    <OPTION value="148F">148F</OPTION> 
+                    <OPTION value="149F">149F</OPTION> 
+                </optgroup>
+                <optgroup label="Celsius">
+                    <OPTION value="62C">62C</OPTION> 
+                    <OPTION value="63C">63C</OPTION> 
+                    <OPTION value="64C">64C</OPTION> 
+                    <OPTION value="65C">65C</OPTION> 
+                </optgroup>
+            </SELECT> 
+                145-149F for 30 mins
+            <br />
+        Saccharification Rest:
+            <SELECT name="SacRest">
+                <optgroup label="Fahrenheit">
+                    <OPTION value="150F">150F</OPTION> 
+                    <OPTION value="151F">151F</OPTION> 
+                    <OPTION value="152F">152F</OPTION> 
+                    <OPTION value="153F">153F</OPTION> 
+                    <OPTION value="154F">154F</OPTION> 
+                    <OPTION selected="selected" value="155F">155F</OPTION> 
+                    <OPTION value="156F">156F</OPTION> 
+                    <OPTION value="157F">157F</OPTION> 
+                    <OPTION value="158F">158F</OPTION> 
+                    <OPTION value="159F">159F</OPTION> 
+                </optgroup>
+                <optgroup label="Celsius">
+                    <OPTION value="65C">65C</OPTION> 
+                    <OPTION value="66C">66C</OPTION> 
+                    <OPTION value="67C">67C</OPTION> 
+                    <OPTION value="68C">68C</OPTION> 
+                    <OPTION value="69C">69C</OPTION> 
+                    <OPTION value="70C">70C</OPTION> 
+                    <OPTION value="71C">71C</OPTION> 
+                </optgroup>
+            </SELECT> 
+                150-157F for 30-60mins
+            <br />
+        Mash Out:
+            <SELECT name="MashOut">
+                <optgroup label="Fahrenheit">
+                    <OPTION value="165F">165F</OPTION> 
+                    <OPTION value="166F">166F</OPTION> 
+                    <OPTION value="167F">167F</OPTION> 
+                    <OPTION value="168F">168F</OPTION> 
+                    <OPTION value="169F">169F</OPTION> 
+                    <OPTION selected="selected" value="170F">170F</OPTION> 
+                </optgroup>
+                <optgroup label="Celsius">
+                    <OPTION value="74C">74C</OPTION> 
+                    <OPTION value="75C">75C</OPTION> 
+                    <OPTION value="76C">76C</OPTION> 
+                    <OPTION value="77C">77C</OPTION> 
+                </optgroup>
+            </SELECT>
+                165-170F for 10-15mins
+            <br />
+            <br /><br />
+                <input type="submit" value="Run calculation">
+                <input type="reset" onclick="mashing_answers.location.href='about:blank';document.getElementById('mashing_answers').frameBorder=0" value="Clear">
+             </td></tr>
+                </table>
+        </form>
         <br /><br />
       ANSWERS:<br />
      <iframe id="mashing_answers" name="mashing_answers" class="answer_iframe" src="about:blank">
@@ -87,64 +218,170 @@ Brew Day Helper<br />
     </iframe> 
        </p>
 
+  <div class="comment">
+        <table border="1">
+            <tr><td>Temp &deg;C</td><td>Temp &deg;F</td><td>Enzyme</td><td>Breaks down</td></tr>
+            <tr><td>40-45 &deg;C</td><td>104.0-113.0 &deg;F</td><td>&beta;-Glucanase</td><td>&beta;-Glucan</td></tr>
+            <tr><td>50-54 &deg;C</td><td>122.0-129.2 &deg;F</td><td>Protease</td><td>Protein</td></tr>
+            <tr><td>62-67 &deg;C</td><td>143.6-152.6 &deg;F</td><td>&beta;-Amylase</td><td>Starch</td></tr>
+            <tr><td>71-72 &deg;C</td><td>159.8-161.6 &deg;F</td><td>&alpha;-Amylase</td><td>Starch</td></tr>
+            <tr><td>76-77 &deg;C</td><td>168.8-170.6 &deg;F</td><td>Mash Out</td><td>Mash Out</td></tr>
+        </table>
+        <br /><br />
+        <b>FYI:</b> &alpha;-Amylase quickly denatures above 78 &deg;C (172.4 &deg;F). Any starches extracted once the mash is brought above this temperature cannot be broken down, 
+        and will cause a starch haze in the finished product, or in larger quantities an unpleasantly harsh flavor can develop. Therefore, the mash-out 
+        temperature rarely exceeds 78 &deg;C (172.4 &deg;F).
+    </div>
+
+
+
      </div><!-- #tab2 -->
      <div id="tab3" class="tab_content"> 
+         <div class="comment">
+              <form method="GET" action="answer_timer.cgi" target="brewing_answers" />
+                  <b>Timer</b><br />
+                  <table>
+                      <tr><td>Boil Length: </td><td> <input name="boil_length" size="3" value="90" />mins </td></tr>
+                      <tr><td>Boil Evaporation Rate:<br />(10% an hour is a good start if you don't know)</td><td><input type="text" size="5" name="evap_rate" value="0.10" /></td></tr>
+                      <tr>
+                          <td>Batch size: </td>
+                          <td>
+                               <input type="text" size="3" name="batch_size" value="11" />
+                                Gal&nbsp;<input type="radio" name="brewVolType" checked="checked" value="Gal" />
+		                        L&nbsp;<input type="radio" name="brewVolType" value="L" />
+                      <tr>
+                          <td>Hop Addition Bittering: (30-60mins)</td>
+                          <td> 
+                              <select name="bittering1" > 
+                                  <option value="0">N/A</option>
+                                  <option selected="selected" value="60">60 mins</option> 
+                                  <option value="55">55 mins</option>  
+                                  <option value="50">50 mins</option>
+                                  <option value="45">45 mins</option>
+                                  <option value="40">40 mins</option>
+                                  <option value="35">35 mins</option>
+                                  <option value="30">30 mins</option>
+                               </select> 
+                           </td>
+                      </tr>
+                      <tr>
+                          <td>Hop Addition Bittering: (30-60mins) </td>
+                          <td> 
+                              <select name="bittering2" > 
+                                  <option selected="selected" value="0">N/A</option>
+                                  <option value="60">60 mins</option> 
+                                  <option value="55">55 mins</option>  
+                                  <option value="50">50 mins</option>
+                                  <option value="45">45 mins</option>
+                                  <option value="40">40 mins</option>
+                                  <option value="35">35 mins</option>
+                                  <option value="30">30 mins</option>
+                               </select> 
+                           </td>
+                       </tr>
+                       <tr>
+                          <td>Hop Addition Flavor: (15-30mins) </td>
+                          <td> 
+                              <select name="flavor1" > 
+                                  <option selected="selected" value="0">N/A</option>
+                                  <option value="30">30 mins</option> 
+                                  <option value="25">25 mins</option>  
+                                  <option value="20">20 mins</option>
+                                  <option value="15">15 mins</option>
+                               </select> 
+                           </td>
+                       </tr> 
+                       <tr>
+                          <td>Hop Addition Flavor: (15-30mins) </td>
+                          <td> 
+                              <select name="flavor2" > 
+                                  <option selected="selected" value="0">N/A</option>
+                                  <option value="30">30 mins</option> 
+                                  <option value="25">25 mins</option>  
+                                  <option value="20">20 mins</option>
+                                  <option value="15">15 mins</option>
+                               </select> 
+                           </td>
+                       </tr>                       
+                       <tr>
+                          <td>Hop Addition Aroma: (1-5mins) </td>
+                          <td> 
+                              <select name="aroma1" > 
+                                  <option selected="selected" value="0">N/A</option>
+                                  <option value="5">5 mins</option> 
+                                  <option value="4">4 mins</option> 
+                                  <option value="3">3 mins</option> 
+                                  <option value="2">2 mins</option> 
+                                  <option value="1">1 min</option>  
+                               </select> 
+                           </td>
+                       </tr>                       
+                       <tr>
+                          <td>Hop Addition Aroma: (1-5mins) </td>
+                          <td> 
+                              <select name="aroma2" > 
+                                  <option selected="selected" value="0">N/A</option>
+                                  <option value="5">5 mins</option> 
+                                  <option value="4">4 mins</option> 
+                                  <option value="3">3 mins</option> 
+                                  <option value="2">2 mins</option> 
+                                  <option value="1">1 min</option>  
+                               </select> 
+                           </td>
+                       </tr>                       
+                          
+                          
+                      <tr><td colspan="2"><input type="submit" value="Start Timer" /></td></tr>
+                  </table>
+              </form>
+          </div>
+
+            <form method="GET" action="answer_brewing.cgi" target="brewing_answers" />
+
+            </form>
+
+
 	 IBUs<br />
-		Hop timer<br />
         <br /><br />
       ANSWERS:<br />
      <iframe id="brewing_answers" name="brewing_answers" class="answer_iframe" src="about:blank">
     [Your browser does not support iframes... Bummer.]
     </iframe> 
 
+  
+
      </div><!-- #tab3 -->
      <div id="tab4" class="tab_content"> 
-		 Temperature adjustment<br />
-		 <table><tr>
-			<td>Temperature:</td>
-			<td><input type="text" name="temp" value="" /> 
-				  F <input type="radio" name="gravTempType" checked="checked" value="F" />
-				  C <input type="radio" name="gravTempType" value="C" />
-			  </td>
-			  </tr><tr>
-				<td>Gravity: </td>
-			<td><input type="text" name="gravity" value="" /> 
-				  SG <input type="radio" name="gravType" checked="checked" value="SG" />
-				  Plato <input type="radio" name="gravType" value="Plato" />
-			  </td>
-		  </tr>
-		  <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
-	  </table>
-	  <br /><br />
-<hr>
-
-	  <br /><br />
-	  <br /><br />
-
 <!-- ABV, ABW, Calories, etc... -->
      <form method="GET" action="answer_fermentation.cgi" target="fermentation_answers" />
-         <table>
+         <table class="input_form">
 			<tr>
 				<td>Original Gravity: </td>
-			    <td><input type="text" name="OG" value="" /></td>
+			    <td><input type="text" name="OG" value="" size="5" /></td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
                 <td>Temp:</td>
-                <td><input type="text" name="OGtemp" value="" /></td>
+                <td><input type="text" name="OGtemp" value="70" size="5" /></td>
 		    </tr>
 			<tr>
 				<td>Final Gravity: </td>
-			    <td><input type="text" name="FG" value="" /> 
+			    <td><input type="text" name="FG" value="" size="5" /> 
+                <td></td>
                 <td>Temp:</td>
-                <td><input type="text" name="FGtemp" value="" /></td>
+                <td><input type="text" name="FGtemp" value="70" size="5" /></td>
 			    </td>
 		    </tr>
                 <tr>
-                <td colspan="4">
-				  SG <input type="radio" name="OGgravType" checked="checked" value="SG" />
-				  Plato <input type="radio" name="OGgravType" value="Plato" />
-				  SG <input type="radio" name="FGgravType" checked="checked" value="SG" />
-				  Plato <input type="radio" name="FGgravType" value="Plato" />
+                <td colspan="3">
+				  SG <input type="radio" name="gravType" checked="checked" value="SG" />
+				  Plato <input type="radio" name="gravType" value="Plato" />
+                </td>
+                <td colspan="2">
+                  <span style="text-align:left;">
+				    F <input type="radio" name="gravTempType" checked="checked" value="F" />
+                    C <input type="radio" name="gravTempType" value="C" />
+                  </span>
           </td></tr>
-		    <tr><td colspan="2"><input type="submit" value="Run calculation"><input type="button" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
+          <tr><td colspan="2"><br /><input type="submit" value="Run calculation"><input type="reset" onclick="fermentation_answers.location.href='about:blank';document.getElementById('fermentation_answers').frameBorder=0" value="Clear"></td></tr>
 	    </table>
     </form>
 <!-- END OF: ABV, ABW, Calories, etc... -->
@@ -159,26 +396,26 @@ Brew Day Helper<br />
      </div><!-- #tab4 --> 
  <div id="tab5" class="tab_content"> 
 
-	 <table>
+	 <table class="input_form">
 		 <tr>
               <form method="GET" action="answer_carbonation.cgi" target="carbonation_answers" />
 			 <td>Volume: </td>
-			 <td><input type="text" name="volume" value="" />
-		   		 Gal <input type="radio" name="volType" checked="checked" value="Gal" />
+			 <td><input type="text" size="5" name="volume" value="5" />
 				 L <input type="radio" name="volType" value="L" />
+		   		 Gal <input type="radio" name="volType" checked="checked" value="Gal" />
 			</td>
 		</tr><tr>
 			<td>Temperature:</td>
-			<td><input type="text" name="temp" value="" /> 
+			<td><input type="text" size="5" name="temp" value="70" /> 
 				  C <input type="radio" name="volTempType" value="C" />
 				  F <input type="radio" name="volTempType" checked="checked" value="F" />
 			  </td>
 		</tr><tr>
         <td>Desired CO<sub>2</sub>:</td>
-        <td><input type="text" name="vol_co2" value="2.5" />
+        <td><input type="text" size="5" name="vol_co2" value="2.5" />
         </td>
 		</tr>
-		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="button" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td>
+		<tr><td colspan="2"><input type="submit" value="calculate carbonation" /><input type="reset" onclick="carbonation_answers.location.href='about:blank';document.getElementById('carbonation_answers').frameBorder=0" value="Clear"></td>
         </form>
 </tr>
 </table>
@@ -301,7 +538,9 @@ level.  The typical range for each beer style (in volumes of CO<sub>2</sub>) is 
 
  </div> <!-- .tab_container --> 
  
-
-TEST After content
+ <br /><br />
+ <center><span style="font-size:8pt">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>. 
+</span></center>
 
 </body></html> 
